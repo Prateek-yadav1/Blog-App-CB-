@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+{{> navbar}}
+
+
+    <h1>Blog Details</h1>
+    <ul>
+      {{!-- we have not used each loop here because we are displaying only one blog --}}
+        <li>
+            <div class="blog-card">
+                <div class="blog-title">Title: {{blog.title}}</div>
+                <div class="blog-meta">Actor: {{blog.actor}}</div>
+                <div class="blog-content">Content: {{blog.content}}</div>
+            </div>
+          
+        </li>
+   
+    </ul>
+</body>
+</html>

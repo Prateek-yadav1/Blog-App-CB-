@@ -6,6 +6,10 @@ const app=express();
 const PORT=4444;
 const routeHandler=require('./routes/blogsRoute');
 
+var hbs = require('hbs');
+
+hbs.registerPartials(path.join(__dirname , 'views/partials'));
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended:true}));
 app.set('view engine','hbs');

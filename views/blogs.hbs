@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+
+{{> navbar}}
+
     <h1>Blog Site</h1>
     <form action="/blogs" method="POST">
         Title: <input type="text" name="title" placeholder="Enter Title"><br>
@@ -18,12 +21,11 @@
     <ul>
         {{#each blogs as |blog|}}
 <li>Title: {{blog.title}}<br>Actor: {{blog.actor}} <br><br> Content: {{blog.content}}<br>
-      <button>
-            <a href="/delete?id={{blog._id}}">Delete</a>
-        </button>
-        <button>
-            <a href="/update?id={{blog._id}}">Update</a>
-        </button>
+    <div class="actor-actions">
+            <a class="actor-btn delete" href="/delete?id={{blog._id}}">Delete</a>
+            <a class="actor-btn update" href="/update?id={{blog._id}}">Update</a>
+            <a class="actor-btn details" href="/details?id={{blog._id}}">Details</a>
+        </div>
 </li>
         {{/each}}
 
