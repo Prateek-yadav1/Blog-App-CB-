@@ -13,14 +13,25 @@
     <h1>Blog Site</h1>
     <form action="/blogs" method="POST">
         Title: <input type="text" name="title" placeholder="Enter Title"><br>
-        Actor: <input name="actor" placeholder="Enter Actor" type="text"></textarea><br>
+        Actor: <br>
+        {{!-- <input name="actor" placeholder="Enter Actor" type="text"></textarea><br> --}}
+
+      <select name="actor" id="select">
+        <option value="" disabled selected>Select an Actor</option>
+        {{#each actors as |actor|}}
+            <option value="{{actor._id}}">{{actor.name}}</option>
+                 {{/each}}
+        </select>
+
+
+       
         Content: <textarea name="content" placeholder="Write the content here for your blog......" type="text"></textarea><br>
 
         <button type="submit">Add Blog</button>
     </form>
     <ul>
         {{#each blogs as |blog|}}
-<li>Title: {{blog.title}}<br>Actor: {{blog.actor}} <br><br> Content: {{blog.content}}<br>
+<li>Title: {{blog.title}}<br>Actor: {{blog.actor.name}} <br><br> Content: {{blog.content}}<br>
     <div class="actor-actions">
             <a class="actor-btn delete" href="/delete?id={{blog._id}}">Delete</a>
             <a class="actor-btn update" href="/update?id={{blog._id}}">Update</a>

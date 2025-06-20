@@ -14,7 +14,14 @@
     <h1>Update Blog: {{blog.title}}</h1>
     <form action="/update" method="POST">
         Title: <input value="{{blog.title}}" type="text" name="title" placeholder="Update Title"><br>
-        Actor: <input value="{{blog.actor}}"  name="actor" placeholder="Update Actor" type="text"></textarea><br>
+          Actor: <br>
+        {{!-- <input name="actor" placeholder="Enter Actor" type="text"></textarea><br> --}}
+
+      <select name="actor" id="select">
+            <option value="{{blog.actor._id}}" disabled selected>{{blog.actor.name}}</option>
+            
+        </select>
+
         Content: <textarea   name="content" placeholder="" type="text">{{blog.content}}</textarea><br>
 <input type="hidden" name="id" value="{{blog._id}}">
         <button type="submit">Update Blog</button>

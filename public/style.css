@@ -31,7 +31,7 @@ form {
     font-size: 1.08rem;
 }
 
-form input[type="text"], form textarea {
+form input[type="text"], form textarea,#select {
     padding: 12px;
     border: 1.5px solid #cfd8dc;
     border-radius: 5px;

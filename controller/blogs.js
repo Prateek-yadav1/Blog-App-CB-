@@ -3,10 +3,12 @@ const Actors = require('../models/actors');
 
 
 module.exports.getBlogs=async (req,res)=>{
-  let blogs=await Blogs.find({});
+  let blogs=await Blogs.find({}).populate('actor');// populate is used to get the actor details from the actors collection
+  let actors=await Actors.find({});
   console.log(blogs);
     res.render('blogs',{
-        blogs
+        blogs,
+        actors
     });
 }
 
@@ -27,7 +29,7 @@ module.exports.postBlogs= async (req, res) => {
 
 module.exports.getUpdate= async (req, res) => {
 const {id} = req.query;
-let blog=await Blogs.find({_id:id});
+let blog=await Blogs.find({_id:id}).populate('actor');// populate is used to get the actor details from the actors collection
 res.render('updateBlogs',{blog:blog[0]});// blog:blog[0] is used to send the first element of the array blog to the updateBlogs view
 }
 
@@ -61,7 +63,7 @@ res.redirect('/actors');
 
 module.exports.getDetails= async (req, res) => {
 const {id} = req.query;
-let blog=await Blogs.findOne({_id:id});
+let blog=await Blogs.findOne({_id:id}).populate('actor');// populate is used to get the actor details from the actors collection
 console.log(blog.title);
     console.log(blog.content);
     console.log(blog.actor);
